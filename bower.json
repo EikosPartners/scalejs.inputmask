@@ -1,0 +1,23 @@
+{
+  "name": "scalejs.inputmask",
+  "version": "0.0.0",
+  "homepage": "",
+  "authors": [
+  ],
+  "description": "",
+  "main": [
+    "dist/scalejs.inputmask.min.js"
+  ],
+  "ignore": [
+    "*", "!dist/*.js"
+  ],
+  "dependencies": {
+    "scalejs": "lisovin/scalejs",
+    "knockout": "~3.3.0",
+    "jquery.inputmask": "RobinHerbots/jquery.inputmask#~3.1.63"
+  },
+  "devDependencies": {
+    "requirejs": "latest"
+  }
+}
+
