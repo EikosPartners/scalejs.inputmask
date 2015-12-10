@@ -1,4 +1,5 @@
 
+
 define('scalejs.inputmask',[
     'scalejs!core',
     'knockout',
@@ -24,9 +25,40 @@ define('scalejs.inputmask',[
         }
     });
 
+    $.extend($.inputmask.defaults.aliases, {
+        percent: {
+            alias: 'numeric',
+            mask: 'i[i[i[i[i[i]]]]] %',
+            definitions: {
+                'i': {
+                    validator: function (chrs, maskset, pos, strict, opts) {
+                        var i, split, dc;
+
+                        for (i = pos - 1; i > -1; i--) {
+                            chrs = maskset.buffer[i] + chrs;
+                        }
+                        chrs = String(chrs);
+                        split = chrs.split('.');
+                        chrs = split[0];
+                        dc = split[1] || '';
+                        for (i = 3 - chrs.length; i > 0; i--) {
+                            chrs = '0' + chrs;
+                        }
+                        chrs += '.' + dc;
+                        for (i = 6 - chrs.length; i > 0; i--) {
+                            chrs += '0';
+                        }
+                        return /100.00|[0-0][0-9]{2}.[0-9]{2}$/.test(chrs);
+                    }
+                }
+            },
+            greedy: false,
+            cardinality: 1
+        }
+    });
+
     ko.bindingHandlers.inputmask = {
         init: function () {
-            //console.log('is inited');
         },
         update: function (
             element,
@@ -45,6 +77,9 @@ define('scalejs.inputmask',[
             options.placeholder = ' ';
             options.autoUnmask = options.autoUnmask === false ? false : true;
             // inits the inputmask
+
+
+
             $(element).inputmask(options);
 
             if(initialVal && initialVal.toString() !== $(element).val()) {
@@ -53,4 +88,5 @@ define('scalejs.inputmask',[
         }
     };
 });
+
 
