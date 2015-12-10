@@ -50,7 +50,6 @@ define('scalejs.inputmask',[
                         for (i = 7 - chrs.length; i > 0; i--) {
                             chrs += '0';
                         }
-                        console.log('chrs', chrs)
                         return /100.00|[0-0][0-9]{2}.[0-9]{3}$/.test(chrs);
                     }
                 }
