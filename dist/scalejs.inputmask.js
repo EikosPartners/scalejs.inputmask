@@ -28,7 +28,7 @@ define('scalejs.inputmask',[
     $.extend($.inputmask.defaults.aliases, {
         percent: {
             alias: 'numeric',
-            mask: 'i[i[i[i[i[i]]]]] %',
+            mask: 'i[i[i[i[i[i[i]]]]]] %',
             definitions: {
                 'i': {
                     validator: function (chrs, maskset, pos, strict, opts) {
@@ -39,16 +39,19 @@ define('scalejs.inputmask',[
                         }
                         chrs = String(chrs);
                         split = chrs.split('.');
+                        if (split.length > 2) {
+                            return false;
+                        }
                         chrs = split[0];
                         dc = split[1] || '';
                         for (i = 3 - chrs.length; i > 0; i--) {
                             chrs = '0' + chrs;
                         }
                         chrs += '.' + dc;
-                        for (i = 6 - chrs.length; i > 0; i--) {
+                        for (i = 7 - chrs.length; i > 0; i--) {
                             chrs += '0';
                         }
-                        return /100.00|[0-0][0-9]{2}.[0-9]{2}$/.test(chrs);
+                        return /100.00|[0-0][0-9]{2}.[0-9]{3}$/.test(chrs);
                     }
                 }
             },
