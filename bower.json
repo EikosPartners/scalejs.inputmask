@@ -1,12 +1,12 @@
 {
   "name": "scalejs.inputmask",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "",
   "authors": [
   ],
   "description": "",
   "main": [
-    "dist/scalejs.inputmask.min.js"
+    "dist/scalejs.inputmask.js"
   ],
   "ignore": [
     "*", "!dist/*.js"

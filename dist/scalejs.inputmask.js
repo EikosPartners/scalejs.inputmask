@@ -70,7 +70,7 @@ define('scalejs.inputmask',[
             allowMinus      : false,
             prefix          : '$ ',
             onBeforeMask    : function (value, opts) {
-                if (value.indexOf('.00') == -1) {
+                if (value.indexOf('.00') == -1 && value !== '') {
                     return value + '.00';
                 }
                 return value;
