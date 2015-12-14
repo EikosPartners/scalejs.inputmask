@@ -57,6 +57,24 @@ define('scalejs.inputmask',[
             greedy: false,
             cardinality: 1
         }
+    },
+    {
+        money: {
+            alias           : 'numeric',
+            groupSeparator  : ',',
+            autoGroup       : true,
+            digits          : 2,
+            rightAlign      : true,
+            greedy          : false,
+            allowMinus      : false,
+            prefix          : '$ ',
+            onBeforeMask    : function (value, opts) {
+                if (value.indexOf('.00') == -1) {
+                    return value + '.00';
+                }
+                return value;
+            }
+        }
     });
 
     ko.bindingHandlers.inputmask = {
