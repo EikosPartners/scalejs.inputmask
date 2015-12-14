@@ -29,6 +29,7 @@ define('scalejs.inputmask',[
         percent: {
             alias: 'numeric',
             mask: 'i[i[i[i[i[i[i]]]]]] %',
+            rightAlign: false,
             definitions: {
                 'i': {
                     validator: function (chrs, maskset, pos, strict, opts) {
@@ -55,6 +56,7 @@ define('scalejs.inputmask',[
                     }
                 }
             },
+            suffix: '%',
             greedy: false,
             cardinality: 1
         }
