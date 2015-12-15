@@ -28,6 +28,7 @@ define('scalejs.inputmask',[
         percent: {
             alias: 'numeric',
             mask: 'i[i[i[i[i[i[i]]]]]] %',
+            allowMinus: true,
             rightAlign: false,
             definitions: {
                 'i': {
@@ -36,6 +37,9 @@ define('scalejs.inputmask',[
 
                         for (i = pos - 1; i > -1; i--) {
                             chrs = maskset.buffer[i] + chrs;
+                        }
+                        if(chrs.indexOf('-') === 0) {
+                            chrs = chrs.slice(1);
                         }
                         chrs = String(chrs);
                         split = chrs.split('.');
