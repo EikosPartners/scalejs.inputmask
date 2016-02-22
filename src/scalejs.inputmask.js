@@ -95,22 +95,32 @@ define('scalejs.inputmask',[
         ) {
             var options = unwrap(valueAccessor()),
                 val = allBindings().value || allBindings().textInput,
-                initialVal = val.peek();
+                initialVal = val.peek(),
+                subscription;
 
             if(!options) {
                 return;
             }
-            options.placeholder = ' ';
+            
+            // removing placeholder as it breaks some input masks, i.e. dates
+            // options.placeholder = options.placeholder ||| ' ';
             options.autoUnmask = options.autoUnmask === false ? false : true;
             // inits the inputmask
-
-
-
             $(element).inputmask(options);
-
+            
             if(initialVal && initialVal.toString() !== $(element).val()) {
                 console.warn('The initial value of the inputmask is not valid. The value will be mutated upon masking', initialVal, options);
             }
+            
+            subscription = val.subscribe(function () {
+                // no matter what, setting the value on the input will trigger inputmask
+                // but inputValue wont get updated appropriately if programmatically set
+                val($(element).val());
+            })
+            
+            ko.utils.domNodeDisposal.addDisposeCallback(element, function() {
+                subscription.dispose();
+            });
         }
     };
 });

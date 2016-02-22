@@ -4,8 +4,7 @@ define('scalejs.inputmask',[
     'scalejs!core',
     'knockout',
     'inputmask',
-    'jquery',
-    'jquery.inputmask.date.extensions'
+    'jquery'
 ], function (
     core,
     ko,
@@ -61,7 +60,7 @@ define('scalejs.inputmask',[
                     }
                 }
             },
-            suffix: ' %',
+            suffix: '%',
             greedy: false,
             cardinality: 1
         }
@@ -96,8 +95,9 @@ define('scalejs.inputmask',[
             bindingContext
         ) {
             var options = unwrap(valueAccessor()),
-                val = allBindings().value || allBindings().textInput || allBindings().datepicker.data,
-                initialVal = val.peek();
+                val = allBindings().value || allBindings().textInput,
+                initialVal = val.peek(),
+                subscription;
 
             if(!options) {
                 return;
@@ -108,10 +108,20 @@ define('scalejs.inputmask',[
             options.autoUnmask = options.autoUnmask === false ? false : true;
             // inits the inputmask
             $(element).inputmask(options);
-
+            
             if(initialVal && initialVal.toString() !== $(element).val()) {
                 console.warn('The initial value of the inputmask is not valid. The value will be mutated upon masking', initialVal, options);
             }
+            
+            subscription = val.subscribe(function () {
+                // no matter what, setting the value on the input will trigger inputmask
+                // but inputValue wont get updated appropriately if programmatically set
+                val($(element).val());
+            })
+            
+            ko.utils.domNodeDisposal.addDisposeCallback(element, function() {
+                subscription.dispose();
+            });
         }
     };
 });

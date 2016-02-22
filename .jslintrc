@@ -12,7 +12,6 @@
     "noempty":    "true",
     "nonbsp":     "false",
     "nonew":      "true",
-    "plusplus":   "true",
     "quotmark":   "single",
     "undef":      "true",
     "unused":     "true",
