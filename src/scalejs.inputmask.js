@@ -3,7 +3,8 @@ define('scalejs.inputmask',[
     'scalejs!core',
     'knockout',
     'inputmask',
-    'jquery'
+    'jquery',
+    'jquery.inputmask.date.extensions'
 ], function (
     core,
     ko,
@@ -59,7 +60,7 @@ define('scalejs.inputmask',[
                     }
                 }
             },
-            suffix: '%',
+            suffix: ' %',
             greedy: false,
             cardinality: 1
         }
@@ -94,7 +95,7 @@ define('scalejs.inputmask',[
             bindingContext
         ) {
             var options = unwrap(valueAccessor()),
-                val = allBindings().value || allBindings().textInput,
+                val = allBindings().value || allBindings().textInput || allBindings().datepicker.data,
                 initialVal = val.peek(),
                 subscription;
 
