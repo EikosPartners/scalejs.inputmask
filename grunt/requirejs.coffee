@@ -7,7 +7,18 @@ module.exports = ( grunt ) ->
         options:
             baseUrl: 'src'
             include: '<%=package.name%>'
-            exclude: ['scalejs','jquery','inputmask','knockout']
+            exclude: [
+                'scalejs',
+                'jquery',
+                'inputmask',
+                'knockout',
+                'jquery.inputmask',
+                'jquery.inputmask.extensions',
+                'jquery.inputmask.date.extensions',
+                'jquery.inputmask.numeric.extensions',
+                'jquery.inputmask.phone.extensions',
+                'jquery.inputmask.regex.extensions'
+            ]
             mainConfigFile: 'rjsconfig.js'
             out: 'build/<%=package.name%>.js'
             optimize: 'none'
