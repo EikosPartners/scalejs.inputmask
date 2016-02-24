@@ -114,15 +114,17 @@ define('scalejs.inputmask',[
                 console.warn('The initial value of the inputmask is not valid. The value will be mutated upon masking', initialVal, options);
             }
             
-            subscription = val.subscribe(function () {
-                // no matter what, setting the value on the input will trigger inputmask
-                // but inputValue wont get updated appropriately if programmatically set
-                val($(element).val());
-            })
-            
-            ko.utils.domNodeDisposal.addDisposeCallback(element, function() {
-                subscription.dispose();
-            });
+            if (options.autoUnmask) {
+                subscription = val.subscribe(function () {
+                    // no matter what, setting the value on the input will trigger inputmask
+                    // but inputValue wont get updated appropriately if programmatically set
+                    val($(element).val());
+                })
+                
+                ko.utils.domNodeDisposal.addDisposeCallback(element, function() {
+                    subscription.dispose();
+                });                
+            }
         }
     };
 });
