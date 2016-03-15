@@ -109,11 +109,12 @@ define('scalejs.inputmask',[
             // inits the inputmask
             $(element).inputmask(options);
             
-            if(initialVal && initialVal.toString() !== $(element).val()) {
-                console.warn('The initial value of the inputmask is not valid. The value will be mutated upon masking', initialVal, options);
-            }
-            
             if (options.autoUnmask) {
+                            
+                if(initialVal && initialVal.toString() !== $(element).val()) {
+                    console.warn('The initial value of the inputmask is not valid. The value will be mutated upon masking', initialVal, options);
+                }
+            
                 subscription = val.subscribe(function () {
                     // no matter what, setting the value on the input will trigger inputmask
                     // but inputValue wont get updated appropriately if programmatically set
