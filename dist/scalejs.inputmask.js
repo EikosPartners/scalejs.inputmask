@@ -83,6 +83,13 @@ define('scalejs.inputmask',[
                 return value;
             }
         }
+    },
+    {
+        date: {
+            'mask': '9[9/9[9/9999]]',
+            'greedy': false,
+            'placeholder': ''
+        }
     });
 
     ko.bindingHandlers.inputmask = {
