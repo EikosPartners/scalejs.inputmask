@@ -6,6 +6,11 @@ var require = {
       '<%=ext_name%>'
     ]
   },
+  map : {
+    '*' : {
+      'scalejs.core' : 'empty:'
+    }
+  },
   paths: {
     requirejs: '../bower_components/requirejs/require',
     scalejs: '../bower_components/scalejs/dist/scalejs.min',

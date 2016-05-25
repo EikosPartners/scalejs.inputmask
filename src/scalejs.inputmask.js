@@ -1,6 +1,6 @@
 
 define('scalejs.inputmask',[
-    'scalejs!core',
+    'scalejs.core',
     'knockout',
     'inputmask',
     'jquery',

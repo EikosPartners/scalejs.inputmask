@@ -1,6 +1,6 @@
 {
   "name": "scalejs.inputmask",
-  "version": "0.4.11",
+  "version": "0.5.0",
   "homepage": "",
   "authors": [
   ],
@@ -12,7 +12,7 @@
     "*", "!dist/*.js"
   ],
   "dependencies": {
-    "scalejs": "lisovin/scalejs",
+    "scalejs": "EikosPartners/scalejs#~0.5.1",
     "knockout": "~3.3.0",
     "jquery.inputmask": "RobinHerbots/jquery.inputmask#~3.1.63"
   },
