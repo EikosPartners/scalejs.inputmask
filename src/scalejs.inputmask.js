@@ -1,22 +1,14 @@
+import ko from 'knockout';
+import $ from 'jquery';
+import 'jquery.inputmask';
+import 'jquery.inputmask/dist/inputmask/jquery.inputmask.date.extensions';
+import 'jquery.inputmask/dist/inputmask/jquery.inputmask.extensions';
+import 'jquery.inputmask/dist/inputmask/jquery.inputmask.numeric.extensions';
+import 'jquery.inputmask/dist/inputmask/jquery.inputmask.phone.extensions';
+import 'jquery.inputmask/dist/inputmask/jquery.inputmask.regex.extensions';
 
-define('scalejs.inputmask',[
-    'scalejs.core',
-    'knockout',
-    'inputmask',
-    'jquery',
-    'jquery.inputmask.date.extensions'
-], function (
-    core,
-    ko,
-    inputmask,
-    $
-) {
 
-    'use strict';
-
-    var is = core.type.is,
-        unwrap = ko.unwrap,
-        clone = core.object.clone;
+    var unwrap = ko.unwrap;
 
     $.extend($.inputmask.defaults.definitions, {
         u: {
@@ -134,4 +126,4 @@ define('scalejs.inputmask',[
             }
         }
     };
-});
+
