@@ -132,4 +132,3 @@ _knockout2.default.bindingHandlers.inputmask = {
         }
     }
 };
-//# sourceMappingURL=scalejs.inputmask.js.map
