@@ -97,12 +97,9 @@ _jquery2.default.extend(_jquery2.default.inputmask.defaults.aliases, {
 });
 
 _knockout2.default.bindingHandlers.inputmask = {
-    init: function init() {},
-    update: function update(element, valueAccessor, allBindings, viewModel, bindingContext) {
+    init: function init(element, valueAccessor, allBindings, viewModel, bindingContext) {
         var options = unwrap(valueAccessor()),
-            val = allBindings().value || allBindings().textInput || allBindings().datepicker.data,
-            initialVal = val.peek(),
-            subscription;
+            observable = allBindings().value || allBindings().textInput || allBindings().datepicker.data;
 
         if (!options) {
             return;
@@ -111,24 +108,23 @@ _knockout2.default.bindingHandlers.inputmask = {
         // removing placeholder as it breaks some input masks, i.e. dates
         // options.placeholder = options.placeholder ||| ' ';
         options.autoUnmask = options.autoUnmask === false ? false : true;
+
+        if (_knockout2.default.isObservable(observable)) {
+            (0, _jquery2.default)(element).on('focusout change', function () {
+                observable((0, _jquery2.default)(element).val());
+            });
+        }
+
         // inits the inputmask
         (0, _jquery2.default)(element).inputmask(options);
+    },
+    update: function update(element, valueAccessor, allBindings, viewModel, bindingContext) {
+        var options = unwrap(valueAccessor()),
+            observable = allBindings().value || allBindings().textInput || allBindings().datepicker.data;
 
-        if (options.autoUnmask) {
-
-            if (initialVal && initialVal.toString() !== (0, _jquery2.default)(element).val()) {
-                console.warn('The initial value of the inputmask is not valid. The value will be mutated upon masking', initialVal, options);
-            }
-
-            subscription = val.subscribe(function () {
-                // no matter what, setting the value on the input will trigger inputmask
-                // but inputValue wont get updated appropriately if programmatically set
-                val((0, _jquery2.default)(element).val());
-            });
-
-            _knockout2.default.utils.domNodeDisposal.addDisposeCallback(element, function () {
-                subscription.dispose();
-            });
+        if (_knockout2.default.isObservable(observable)) {
+            var valuetoWrite = observable();
+            (0, _jquery2.default)(element).val(valuetoWrite);
         }
     }
 };
