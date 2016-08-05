@@ -1,6 +1,8 @@
 var webpack = require('webpack');
 var path = require('path');
 
+// todo: move into ko-bindings
+
 module.exports = {
     resolve: {
         root: [

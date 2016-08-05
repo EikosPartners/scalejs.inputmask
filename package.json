@@ -1,6 +1,6 @@
 {
   "name": "scalejs.inputmask",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main" : "dist/scalejs.inputmask",
   "scripts": {
     "build": "babel src --presets babel-preset-es2015 --out-dir dist",

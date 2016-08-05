@@ -99,7 +99,7 @@ _jquery2.default.extend(_jquery2.default.inputmask.defaults.aliases, {
 _knockout2.default.bindingHandlers.inputmask = {
     init: function init(element, valueAccessor, allBindings, viewModel, bindingContext) {
         var options = unwrap(valueAccessor()),
-            observable = allBindings().value || allBindings().textInput || allBindings().datepicker.data;
+            observable = allBindings().value || allBindings().textInput;
 
         if (!options) {
             return;
