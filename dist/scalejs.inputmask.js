@@ -120,7 +120,7 @@ _knockout2.default.bindingHandlers.inputmask = {
     },
     update: function update(element, valueAccessor, allBindings, viewModel, bindingContext) {
         var options = unwrap(valueAccessor()),
-            observable = allBindings().value || allBindings().textInput || allBindings().datepicker.data;
+            observable = allBindings().value || allBindings().textInput;
 
         if (_knockout2.default.isObservable(observable)) {
             var valuetoWrite = observable();

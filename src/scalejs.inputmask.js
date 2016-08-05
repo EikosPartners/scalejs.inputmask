@@ -119,7 +119,7 @@ import 'jquery.inputmask/dist/inputmask/jquery.inputmask.regex.extensions';
             bindingContext
         ) {
             var options = unwrap(valueAccessor()),
-                observable = allBindings().value || allBindings().textInput || allBindings().datepicker.data;
+                observable = allBindings().value || allBindings().textInput;
         
             if (ko.isObservable(observable)) {
                 var valuetoWrite = observable();
