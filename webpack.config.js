@@ -10,7 +10,12 @@ module.exports = {
         ],
         alias: {
             "inputmask.dependencyLib": path.join(__dirname, "node_modules/jquery.inputmask/extra/dependencyLibs/inputmask.dependencyLib.jquery"),
-            "inputmask": "jquery.inputmask"
+            "inputmask": "jquery.inputmask",
+            "inputmask/dist/inputmask/inputmask.date.extensions": path.join(__dirname, "node_modules/jquery.inputmask/dist/inputmask/inputmask.date.extensions"),
+            "inputmask/dist/inputmask/inputmask.extensions": path.join(__dirname, "node_modules/jquery.inputmask/dist/inputmask/inputmask.extensions"),
+            "inputmask/dist/inputmask/inputmask.numeric.extensions": path.join(__dirname, "node_modules/jquery.inputmask/dist/inputmask/inputmask.numeric.extensions"),
+            "inputmask/dist/inputmask/inputmask.phone.extensions": path.join(__dirname, "node_modules/jquery.inputmask/dist/inputmask/inputmask.phone.extensions"),
+            "inputmask/dist/inputmask/inputmask.regex.extensions": path.join(__dirname, "node_modules/jquery.inputmask/dist/inputmask/inputmask.regex.extensions")
         }
     },
     module: {
