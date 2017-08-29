@@ -1,23 +1,24 @@
 import ko from 'knockout';
 import $ from 'jquery';
-import 'jquery.inputmask';
-import 'jquery.inputmask/dist/inputmask/jquery.inputmask.date.extensions';
-import 'jquery.inputmask/dist/inputmask/jquery.inputmask.extensions';
-import 'jquery.inputmask/dist/inputmask/jquery.inputmask.numeric.extensions';
-import 'jquery.inputmask/dist/inputmask/jquery.inputmask.phone.extensions';
-import 'jquery.inputmask/dist/inputmask/jquery.inputmask.regex.extensions';
+import 'inputmask.dependencyLib';
+import inputmask from 'inputmask';
+import 'inputmask/dist/inputmask/inputmask.date.extensions';
+import 'inputmask/dist/inputmask/inputmask.extensions';
+import 'inputmask/dist/inputmask/inputmask.numeric.extensions';
+import 'inputmask/dist/inputmask/inputmask.phone.extensions';
+import 'inputmask/dist/inputmask/inputmask.regex.extensions';
 
 
     var unwrap = ko.unwrap;
 
-    $.extend($.inputmask.defaults.definitions, {
+    inputmask.extendDefinitions({
         u: {
             validator: '[0-9A-F]',
             cardinality: 1
         }
     });
 
-    $.extend($.inputmask.defaults.aliases, {
+    inputmask.extendAliases({
         percent: {
             alias: 'numeric',
             mask: 'i[i[i[i[i[i[i]]]]]] %',

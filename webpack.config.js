@@ -7,7 +7,11 @@ module.exports = {
     resolve: {
         root: [
             __dirname, path.join(__dirname, 'src/')
-        ]
+        ],
+        alias: {
+            "inputmask.dependencyLib": path.join(__dirname, "node_modules/jquery.inputmask/extra/dependencyLibs/inputmask.dependencyLib.jquery"),
+            "inputmask": "jquery.inputmask"
+        }
     },
     module: {
         loaders: [
