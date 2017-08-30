@@ -3,7 +3,7 @@
   "version": "1.0.6",
   "main": "dist/scalejs.inputmask",
   "scripts": {
-    "build": "babel src --presets babel-preset-es2015 --out-dir dist",
+    "build": "babel src/ --presets babel-preset-es2015 --out-dir dist/ --source-maps",
     "doc": "jsdoc -d ./doc/ src/ -r",
     "test": "karma start test/karma_config/karma.config.js",
     "test-coverage": "rimraf test/coverage && karma start test/karma_config/karma.config.coverage.js"
