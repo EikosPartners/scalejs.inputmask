@@ -82,7 +82,10 @@ _jquery2.default.extend(_jquery2.default.inputmask.defaults.aliases, {
         allowMinus: false,
         prefix: '$ ',
         onBeforeMask: function onBeforeMask(value, opts) {
-            return (parseFloat(value) || 0).toFixed(2);
+            if (value !== '') {
+                return (parseFloat(value) || 0).toFixed(2);
+            }
+            return value;
         }
     }
 }, {

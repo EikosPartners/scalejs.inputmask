@@ -68,7 +68,10 @@ import 'jquery.inputmask/dist/inputmask/jquery.inputmask.regex.extensions';
             allowMinus      : false,
             prefix          : '$ ',
             onBeforeMask    : function (value, opts) {
-                return (parseFloat(value) || 0).toFixed(2);
+                if (value !== ''){
+                    return (parseFloat(value) || 0).toFixed(2);
+                }
+                return value;
             }
         }
     },
