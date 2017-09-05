@@ -112,7 +112,9 @@ _knockout2.default.bindingHandlers.inputmask = {
         if (_knockout2.default.isObservable(observable)) {
             (0, _jquery2.default)(element).on('focusout change', function () {
                 observable((0, _jquery2.default)(element).val());
-                observable.valueHasMutated();
+                if (options.alias === 'money' && observable() !== parseFloat(observable()).toFixed(2)) {
+                    observable.valueHasMutated();
+                }
             });
         }
 

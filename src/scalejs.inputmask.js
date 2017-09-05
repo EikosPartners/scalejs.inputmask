@@ -105,7 +105,9 @@ import 'jquery.inputmask/dist/inputmask/jquery.inputmask.regex.extensions';
             if (ko.isObservable(observable)) {
                 $(element).on('focusout change', function () {
                     observable($(element).val());
-                    observable.valueHasMutated();
+                    if (options.alias === 'money' && observable() !== (parseFloat(observable())).toFixed(2)){
+                        observable.valueHasMutated();
+                    }
                 });
             }
 
