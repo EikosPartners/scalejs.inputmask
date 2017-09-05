@@ -82,8 +82,8 @@ _jquery2.default.extend(_jquery2.default.inputmask.defaults.aliases, {
         allowMinus: false,
         prefix: '$ ',
         onBeforeMask: function onBeforeMask(value, opts) {
-            if (value.indexOf('.00') == -1 && value !== '') {
-                return value + '.00';
+            if (value !== '') {
+                return (parseFloat(value) || 0).toFixed(2);
             }
             return value;
         }
@@ -112,6 +112,9 @@ _knockout2.default.bindingHandlers.inputmask = {
         if (_knockout2.default.isObservable(observable)) {
             (0, _jquery2.default)(element).on('focusout change', function () {
                 observable((0, _jquery2.default)(element).val());
+                if (options.alias === 'money' && observable() !== parseFloat(observable()).toFixed(2)) {
+                    observable.valueHasMutated();
+                }
             });
         }
 
