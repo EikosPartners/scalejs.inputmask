@@ -68,8 +68,8 @@ import 'jquery.inputmask/dist/inputmask/jquery.inputmask.regex.extensions';
             allowMinus      : false,
             prefix          : '$ ',
             onBeforeMask    : function (value, opts) {
-                if (value.indexOf('.00') == -1 && value !== '') {
-                    return value + '.00';
+                if (value !== ''){
+                    return (parseFloat(value) || 0).toFixed(2);
                 }
                 return value;
             }
@@ -105,6 +105,9 @@ import 'jquery.inputmask/dist/inputmask/jquery.inputmask.regex.extensions';
             if (ko.isObservable(observable)) {
                 $(element).on('focusout change', function () {
                     observable($(element).val());
+                    if (options.alias === 'money' && observable() !== (parseFloat(observable())).toFixed(2)){
+                        observable.valueHasMutated();
+                    }
                 });
             }
 
