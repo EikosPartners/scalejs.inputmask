@@ -1,23 +1,18 @@
 import ko from 'knockout';
 import $ from 'jquery';
-import 'jquery.inputmask';
-import 'jquery.inputmask/dist/inputmask/jquery.inputmask.date.extensions';
-import 'jquery.inputmask/dist/inputmask/jquery.inputmask.extensions';
-import 'jquery.inputmask/dist/inputmask/jquery.inputmask.numeric.extensions';
-import 'jquery.inputmask/dist/inputmask/jquery.inputmask.phone.extensions';
-import 'jquery.inputmask/dist/inputmask/jquery.inputmask.regex.extensions';
+import Inputmask from 'inputmask';
 
 
     var unwrap = ko.unwrap;
 
-    $.extend($.inputmask.defaults.definitions, {
+    Inputmask.extendDefinitions({
         u: {
             validator: '[0-9A-F]',
             cardinality: 1
         }
     });
 
-    $.extend($.inputmask.defaults.aliases, {
+    Inputmask.extendAliases({
         percent: {
             alias: 'numeric',
             mask: 'i[i[i[i[i[i[i]]]]]] %',
@@ -101,7 +96,7 @@ import 'jquery.inputmask/dist/inputmask/jquery.inputmask.regex.extensions';
             // removing placeholder as it breaks some input masks, i.e. dates
             // options.placeholder = options.placeholder ||| ' ';
             options.autoUnmask = options.autoUnmask === false ? false : true;
-            
+
             if (ko.isObservable(observable)) {
                 $(element).on('focusout change', function () {
                     observable($(element).val());
@@ -123,7 +118,7 @@ import 'jquery.inputmask/dist/inputmask/jquery.inputmask.regex.extensions';
         ) {
             var options = unwrap(valueAccessor()),
                 observable = allBindings().value || allBindings().textInput;
-        
+
             if (ko.isObservable(observable)) {
                 var valuetoWrite = observable();
                 $(element).val(valuetoWrite);

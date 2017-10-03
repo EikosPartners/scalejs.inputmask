@@ -1,6 +1,6 @@
 {
   "name": "scalejs.inputmask",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "main": "dist/scalejs.inputmask",
   "scripts": {
     "build": "babel src --presets babel-preset-es2015 --out-dir dist",
@@ -29,7 +29,7 @@
     "karma-webpack": "^1.7.0"
   },
   "dependencies": {
-    "jquery.inputmask": "~3.1.63",
+    "inputmask": "^3.3.8",
     "knockout": "^3.4.0",
     "scalejs": ">=0.4.1"
   }

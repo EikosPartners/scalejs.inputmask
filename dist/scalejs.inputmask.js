@@ -8,30 +8,22 @@ var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-require('jquery.inputmask');
+var _inputmask = require('inputmask');
 
-require('jquery.inputmask/dist/inputmask/jquery.inputmask.date.extensions');
-
-require('jquery.inputmask/dist/inputmask/jquery.inputmask.extensions');
-
-require('jquery.inputmask/dist/inputmask/jquery.inputmask.numeric.extensions');
-
-require('jquery.inputmask/dist/inputmask/jquery.inputmask.phone.extensions');
-
-require('jquery.inputmask/dist/inputmask/jquery.inputmask.regex.extensions');
+var _inputmask2 = _interopRequireDefault(_inputmask);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var unwrap = _knockout2.default.unwrap;
 
-_jquery2.default.extend(_jquery2.default.inputmask.defaults.definitions, {
+_inputmask2.default.extendDefinitions({
     u: {
         validator: '[0-9A-F]',
         cardinality: 1
     }
 });
 
-_jquery2.default.extend(_jquery2.default.inputmask.defaults.aliases, {
+_inputmask2.default.extendAliases({
     percent: {
         alias: 'numeric',
         mask: 'i[i[i[i[i[i[i]]]]]] %',
