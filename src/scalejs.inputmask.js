@@ -1,6 +1,7 @@
 import ko from 'knockout';
 import $ from 'jquery';
 import Inputmask from 'inputmask';
+import 'inputmask/dist/jquery.inputmask.bundle';
 
 
     var unwrap = ko.unwrap;

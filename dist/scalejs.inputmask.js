@@ -12,6 +12,8 @@ var _inputmask = require('inputmask');
 
 var _inputmask2 = _interopRequireDefault(_inputmask);
 
+require('inputmask/dist/jquery.inputmask.bundle');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var unwrap = _knockout2.default.unwrap;
